@@ -1,0 +1,12 @@
+Tools for maintaining AOSP and QAEP mirror server (gitweb & repo) 
+
+* gen_gitweb_list.sh
+  It's a handy script for generating project.list file for gitweb.
+  Made for AOSP mirror.
+
+* get_qaep_new_manifest.sh
+  QAEP do not provide up-to-date manifest.xml of the whole repositories, 
+  you have to manually add the specific path in the manifest.xml when new
+  release comes in and that's really annoying.
+  This script gets the full project list from codeaurora.org, then generates 
+  new manifest.xml automatically if new repository is available.
