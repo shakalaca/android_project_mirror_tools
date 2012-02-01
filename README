@@ -10,3 +10,7 @@ Tools for maintaining AOSP and QAEP mirror server (gitweb & repo)
   release comes in and that's really annoying.
   This script gets the full project list from codeaurora.org, then generates 
   new manifest.xml automatically if new repository is available.
+
+Any questions feel free contact me :-)
+
+E-mail: shakalaca AT gmail dot com
