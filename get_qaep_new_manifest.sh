@@ -4,6 +4,7 @@
 REPO_PATH=/home/source/qaep.repo
 GITWEB_PATH=/home/source/qaep
 ROOT_DIR=/home/source/mirror_cmd
+FIRST_TIME=1
 
 # clean up temp files
 rm -f $ROOT_DIR/qaep.list.tmp
@@ -25,6 +26,9 @@ fi
 if [ $size -lt 1024 ]; then
   echo "Error getting gitweb list."
 else
+  if [ -f $ROOT_DIR/qaep.list ]; then
+    FIRST_TIME=0
+  fi
   mv $ROOT_DIR/qaep.list $ROOT_DIR/qaep.list.yesterday
   cat $ROOT_DIR/qaep.list.tmp | sort | uniq > $ROOT_DIR/qaep.list
   rm $ROOT_DIR/qaep.list.tmp
@@ -32,7 +36,7 @@ else
   diff $ROOT_DIR/qaep.list $ROOT_DIR/qaep.list.yesterday > $ROOT_DIR/qaep.list.difference
   size=$(stat -c %s $ROOT_DIR/qaep.list.difference)
 
-  if [ $size = 0 ]; then
+  if [ $size = 0 ] && [ $FIRST_TIME = 0 ]; then
     echo "No new repo"
   else
     echo "Updating manifest.xml"
